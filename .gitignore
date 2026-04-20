@@ -1,0 +1,19 @@
+# Secrets / local overrides
+.zshrc.local
+.env
+
+# Neovim runtime state
+.config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json
+.config/nvim/.neoconf.json
+
+# Tmux plugins (installed by install.sh)
+.config/tmux/plugins/
+.tmux/plugins/
+
+# Claude Code project settings
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
