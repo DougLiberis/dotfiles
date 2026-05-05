@@ -9,7 +9,8 @@ dot_tmux.conf
 # All bash bootstrap scripts are Linux/macOS-only
 .chezmoiscripts/*.sh
 {{- else }}
-# PowerShell profile + stub installer are Windows-only
+# PowerShell profile + stub installer + pwsh prompt theme are Windows-only
 dot_config/powershell
 .chezmoiscripts/run_onchange_after_install-pwsh-profile-stub.ps1
+dot_oh-my-posh-theme.omp.json
 {{- end }}
