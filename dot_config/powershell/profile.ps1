@@ -30,7 +30,10 @@ $env:SF_ORG_MAX_QUERY_LIMIT = "100000"
 $LocalProfile = Join-Path $HOME ".config\powershell\profile.local.ps1"
 if (Test-Path $LocalProfile) { . $LocalProfile }
 
-# ── oh-my-posh prompt (optional — uncomment if installed) ────────────────────
-# if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
-#     oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\catppuccin_mocha.omp.json" | Invoke-Expression
-# }
+# ── oh-my-posh prompt ────────────────────────────────────────────────────────
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+    $ompConfig = Join-Path $HOME 'oh-my-posh-theme.omp.json'
+    if (Test-Path $ompConfig) {
+        oh-my-posh init pwsh --config $ompConfig | Invoke-Expression
+    }
+}
