@@ -95,7 +95,7 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+alias b='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -131,7 +131,7 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:$HOME/.local/bin:$HOME/bin"
 
 # Auto-attach to (or create) a persistent tmux session named 'main'.
-# Fires on SSH connections only — skips nested shells and local terminals.
-if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ] && command -v tmux &>/dev/null; then
+# Applies to all terminals — SSH, coder.ai, and local.
+if [ -z "$TMUX" ] && command -v tmux &>/dev/null; then
   exec tmux new-session -A -s main
 fi
