@@ -1,0 +1,6 @@
+# ~/.profile: executed by login shells.
+# Sources .bashrc so PATH and other settings are consistent everywhere.
+
+if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+fi
