@@ -16,6 +16,9 @@ dot_config/nvim/README.md
 # Chezmoi runtime
 .chezmoicache/
 
+# Claude Code local-only settings
+.claude/settings.local.json
+
 # OS
 .DS_Store
 Thumbs.db

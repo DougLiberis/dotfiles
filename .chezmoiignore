@@ -1,2 +1,15 @@
 # Ignore the nvim example spec — it's a template stub, not real config
 .config/nvim/lua/plugins/example.lua
+
+{{- if eq .chezmoi.os "windows" }}
+# Linux/macOS shell + tmux configs aren't used on native Windows
+dot_bashrc
+dot_zshrc
+dot_tmux.conf
+# All bash bootstrap scripts are Linux/macOS-only
+.chezmoiscripts/*.sh
+{{- else }}
+# PowerShell profile + stub installer are Windows-only
+dot_config/powershell
+.chezmoiscripts/run_onchange_after_install-pwsh-profile-stub.ps1
+{{- end }}
