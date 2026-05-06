@@ -1,0 +1,18 @@
+{{- if eq .chezmoi.os "windows" -}}
+# Sets XDG_CONFIG_HOME (User scope) to ~/.config so native Windows tools like
+# nvim.exe pick up the chezmoi-managed config under $HOME\.config instead of
+# their Windows-specific defaults (e.g. %LOCALAPPDATA%\nvim).
+
+$ErrorActionPreference = 'Stop'
+
+$target = Join-Path $HOME '.config'
+$current = [Environment]::GetEnvironmentVariable('XDG_CONFIG_HOME', 'User')
+
+if ($current -ne $target) {
+    [Environment]::SetEnvironmentVariable('XDG_CONFIG_HOME', $target, 'User')
+    Write-Host "Set user env var XDG_CONFIG_HOME = $target"
+    Write-Host "Open a new shell (or sign out/in) for the change to take effect."
+} else {
+    Write-Host "XDG_CONFIG_HOME already set to $target"
+}
+{{- end }}
