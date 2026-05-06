@@ -1,3 +1,6 @@
+# Repo docs / agent config — not dotfiles, never deploy to $HOME
+CLAUDE.md
+
 # Ignore the nvim example spec — it's a template stub, not real config
 .config/nvim/lua/plugins/example.lua
 
