@@ -34,11 +34,12 @@ config.color_scheme = 'Catppuccin Mocha'
 
 -- ── Window ─────────────────────────────────────────────────────────────────--
 config.window_background_opacity = 0.97
--- 'TITLE | RESIZE' keeps a normal, grabbable title bar. For a sleeker
--- frameless look, use 'INTEGRATED_BUTTONS|RESIZE' instead and set
--- hide_tab_bar_if_only_one_tab = false (the tab bar then carries the window
--- controls and is draggable; otherwise a single tab leaves nothing to grab).
-config.window_decorations = 'TITLE | RESIZE'
+-- Frameless look: the window controls (min/max/close) live in the tab bar,
+-- which is itself draggable to move the window. Requires the tab bar to stay
+-- visible (see hide_tab_bar_if_only_one_tab below) so there's always a grab
+-- area and the buttons are reachable. For a classic OS title bar instead,
+-- use 'TITLE | RESIZE'.
+config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.window_padding = { left = 8, right = 8, top = 8, bottom = 8 }
 config.adjust_window_size_when_changing_font_size = false
 config.initial_cols = 120
@@ -46,7 +47,8 @@ config.initial_rows = 32
 
 -- ── Tab bar ──────────────────────────────────────────────────────────────────
 config.use_fancy_tab_bar = true
-config.hide_tab_bar_if_only_one_tab = true
+-- Kept visible so INTEGRATED_BUTTONS always has its window controls + drag area.
+config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = false
 config.show_new_tab_button_in_tab_bar = true
 
