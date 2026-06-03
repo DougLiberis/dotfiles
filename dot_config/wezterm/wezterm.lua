@@ -34,7 +34,11 @@ config.color_scheme = 'Catppuccin Mocha'
 
 -- ── Window ─────────────────────────────────────────────────────────────────--
 config.window_background_opacity = 0.97
-config.window_decorations = 'RESIZE'           -- thin border, native resize
+-- 'TITLE | RESIZE' keeps a normal, grabbable title bar. For a sleeker
+-- frameless look, use 'INTEGRATED_BUTTONS|RESIZE' instead and set
+-- hide_tab_bar_if_only_one_tab = false (the tab bar then carries the window
+-- controls and is draggable; otherwise a single tab leaves nothing to grab).
+config.window_decorations = 'TITLE | RESIZE'
 config.window_padding = { left = 8, right = 8, top = 8, bottom = 8 }
 config.adjust_window_size_when_changing_font_size = false
 config.initial_cols = 120
