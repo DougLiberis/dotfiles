@@ -4,6 +4,8 @@
 {{- else if eq .chezmoi.os "darwin" -}}
 {{- $gh = "/opt/homebrew/bin/gh" -}}
 {{- end -}}
+{{- /* git wants forward slashes in paths even on Windows */ -}}
+{{- $home := .chezmoi.homeDir | replace "\\" "/" -}}
 [credential "https://github.com"]
 	helper =
 	helper = !{{ $gh }} auth git-credential
@@ -13,5 +15,21 @@
 [user]
 	email = doug.finnie@liberis.com
 	name = Doug Finnie
+	signingkey = {{ $home }}/.ssh/id_ed25519.pub
 [alias]
 	rm-merged = !git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D
+[core]
+	autocrlf = {{ if eq .chezmoi.os "windows" }}true{{ else }}input{{ end }}
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = {{ $home }}/.config/git/allowed_signers
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
