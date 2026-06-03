@@ -7,15 +7,17 @@ README.md
 
 {{- if eq .chezmoi.os "windows" }}
 # Linux/macOS shell + tmux configs aren't used on native Windows
-dot_bashrc
-dot_zshrc
-dot_tmux.conf
+.bashrc
+.zshrc
+.tmux.conf
 # All bash bootstrap scripts are Linux/macOS-only
 .chezmoiscripts/*.sh
 {{- else }}
 # PowerShell profile + stub installer + pwsh prompt theme are Windows-only
-dot_config/powershell
+# WezTerm here is the native-Windows local install only
+.config/wezterm
+.config/powershell
 .chezmoiscripts/run_onchange_after_install-pwsh-profile-stub.ps1
 .chezmoiscripts/run_onchange_after_set-xdg-config-home.ps1
-dot_oh-my-posh-theme.omp.json
+.oh-my-posh-theme.omp.json
 {{- end }}
