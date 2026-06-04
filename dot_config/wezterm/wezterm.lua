@@ -58,6 +58,7 @@ config.colors = {
     '#8ee8d0',  -- bright cyan
     '#d6f5d6',  -- bright white
   },
+  split = '#2d5a2d',  -- pane divider line
 }
 
 -- Slight brightness lift creates perceived phosphor glow without CRT artifacts.
@@ -86,6 +87,13 @@ config.use_fancy_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = false
 config.show_new_tab_button_in_tab_bar = true
+
+-- ── Pane focus ─────────────────────────────────────────────────────────────--
+-- Dim inactive panes so the focused pane stands out at full brightness.
+config.inactive_pane_hsb = {
+  saturation = 0.5,
+  brightness = 0.6,
+}
 
 -- ── Behaviour ──────────────────────────────────────────────────────────────--
 config.scrollback_lines = 10000
