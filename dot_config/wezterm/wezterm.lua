@@ -29,8 +29,43 @@ config.font_size = 11.0
 config.warn_about_missing_glyphs = false
 
 -- ── Colour scheme ──────────────────────────────────────────────────────────--
--- Browse built-ins at https://wezfurlong.org/wezterm/colorschemes/
-config.color_scheme = 'Catppuccin Mocha'
+-- Phosphor green soft glow — P39 green palette, no CRT scanlines.
+config.colors = {
+  background    = '#0c110c',
+  foreground    = '#9fefac',
+  cursor_bg     = '#6bcb77',
+  cursor_fg     = '#0c110c',
+  cursor_border = '#6bcb77',
+  selection_bg  = '#1e3a1e',
+  selection_fg  = '#d6f5d6',
+  ansi = {
+    '#111a11',  -- black
+    '#c46b6b',  -- red
+    '#6bcb77',  -- green
+    '#d4b96a',  -- yellow
+    '#6baed6',  -- blue
+    '#b57ecf',  -- magenta
+    '#6ccfb5',  -- cyan
+    '#9fefac',  -- white
+  },
+  brights = {
+    '#2a3d2a',  -- bright black
+    '#e08080',  -- bright red
+    '#93e89d',  -- bright green
+    '#e8d08a',  -- bright yellow
+    '#88c2e8',  -- bright blue
+    '#cc9fe0',  -- bright magenta
+    '#8ee8d0',  -- bright cyan
+    '#d6f5d6',  -- bright white
+  },
+}
+
+-- Slight brightness lift creates perceived phosphor glow without CRT artifacts.
+config.foreground_text_hsb = {
+  hue        = 1.0,
+  saturation = 1.1,
+  brightness = 1.05,
+}
 
 -- ── Window ─────────────────────────────────────────────────────────────────--
 config.window_background_opacity = 0.97
