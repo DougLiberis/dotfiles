@@ -14,6 +14,28 @@ This will:
 
 After applying, open tmux and press `<prefix>+I` to install remaining plugins via TPM.
 
+### Coder workspaces (no chezmoi pre-installed)
+
+Liberis Coder engineer workspaces don't use chezmoi directly — they clone this
+repo and run **`install.sh`** at the repo root on every start (and on *Refresh
+Dotfiles*). Point the workspace's **Dotfiles URI** parameter at this repo and
+`install.sh` does the rest: it installs chezmoi into `~/.local/bin` (no root)
+and applies from the clone.
+
+It exports `DOTFILES_CODER=1`, which switches on a branch in `.chezmoiignore`
+so chezmoi does **not** overwrite workspace-entrypoint–managed files. In a
+workspace:
+
+- `~/.bashrc` is left to the entrypoint; `install.sh` appends a single guarded
+  line sourcing `~/.config/shell/dotfiles.sh` (the portable env/PATH config).
+- `.gitconfig` is skipped (no SSH signing key, and its credential helper would
+  fight the git proxy); `install.sh` sets only a safe `user.name`/`user.email`.
+- tmux auto-attach, the `.sh` bootstrap scripts (neovim needs `sudo`), and
+  terminal-emulator configs are skipped.
+
+`install.sh` must keep its executable bit and LF endings (enforced via
+`.gitattributes`) or Coder silently skips it.
+
 ## Update
 
 ```bash

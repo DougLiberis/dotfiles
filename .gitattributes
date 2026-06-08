@@ -1,0 +1,8 @@
+# Shell scripts must keep LF endings — they run on Linux (Coder workspaces,
+# WSL) where a CRLF in the shebang breaks execution. Authored on Windows.
+*.sh        text eol=lf
+install.sh  text eol=lf
+.bashrc     text eol=lf
+dot_bashrc  text eol=lf
+dot_zshrc   text eol=lf
+dot_profile text eol=lf

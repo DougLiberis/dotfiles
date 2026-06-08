@@ -4,7 +4,6 @@
 .tmux.conf
 .gitconfig
 .config/
-install.sh
 
 # Neovim runtime / generated files
 dot_config/nvim/lazy-lock.json

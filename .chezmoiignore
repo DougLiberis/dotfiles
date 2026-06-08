@@ -1,6 +1,8 @@
 # Repo docs / agent config — not dotfiles, never deploy to $HOME
 CLAUDE.md
 README.md
+# Coder workspace entry point — run by Coder, not a file for $HOME
+install.sh
 
 # Ignore the nvim example spec — it's a template stub, not real config
 .config/nvim/lua/plugins/example.lua
@@ -9,7 +11,9 @@ README.md
 # Linux/macOS shell + tmux configs aren't used on native Windows
 .bashrc
 .zshrc
+.profile
 .tmux.conf
+.config/shell
 # All bash bootstrap scripts are Linux/macOS-only
 .chezmoiscripts/*.sh
 {{- else }}
@@ -19,5 +23,27 @@ README.md
 .config/powershell
 .chezmoiscripts/run_onchange_after_install-pwsh-profile-stub.ps1
 .chezmoiscripts/run_onchange_after_set-xdg-config-home.ps1
+.oh-my-posh-theme.omp.json
+{{- end }}
+
+{{- if env "DOTFILES_CODER" }}
+# --- Coder workspace (install.sh exports DOTFILES_CODER) ---
+# The workspace entrypoint owns ~/.bashrc (proxy PATH, append-only). chezmoi
+# must not overwrite it; install.sh sources ~/.config/shell/dotfiles.sh into it.
+.bashrc
+.profile
+.zshrc
+# .gitconfig would break here: SSH commit/tag signing has no key, and the
+# credential-helper override fights the workspace git proxy. install.sh sets a
+# safe user.name/user.email instead.
+.gitconfig
+# tmux is not used in the workspace (no auto-attach).
+.tmux.conf
+.config/tmux
+# Bootstrap scripts need root (neovim -> sudo) or a running tmux; install.sh
+# already provisions chezmoi, so skip them all for a clean, root-free apply.
+.chezmoiscripts/*.sh
+# Terminal-emulator + prompt configs are irrelevant in a headless workspace.
+.config/ghostty
 .oh-my-posh-theme.omp.json
 {{- end }}

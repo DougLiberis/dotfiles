@@ -1,2 +1,3 @@
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-. "$HOME/.cargo/env"
+# Portable env + PATH customizations, shared with bash. Edit
+# dot_config/shell/dotfiles.sh, not here.
+[ -f "$HOME/.config/shell/dotfiles.sh" ] && . "$HOME/.config/shell/dotfiles.sh"

@@ -121,17 +121,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-export PATH="$PATH:$HOME/.local/bin:$HOME/bin"
+# Portable env + PATH customizations, shared with zsh and the Coder workspace
+# bootstrap. Edit dot_config/shell/dotfiles.sh, not here.
+[ -f "$HOME/.config/shell/dotfiles.sh" ] && . "$HOME/.config/shell/dotfiles.sh"
 
 # Auto-attach to (or create) a persistent tmux session named 'main'.
-# Applies to all terminals — SSH, coder.ai, and local.
+# Applies to all terminals — SSH, coder.ai, and local. (Not used in Coder
+# workspaces: chezmoi does not manage ~/.bashrc there.)
 if [ -z "$TMUX" ] && command -v tmux &>/dev/null; then
   exec tmux new-session -A -s main
 fi
