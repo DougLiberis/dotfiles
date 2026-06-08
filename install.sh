@@ -36,8 +36,11 @@ fi
 # ---------- 2. apply dotfiles from this clone ----------
 # --source points chezmoi at the already-cloned repo: no second clone, no extra
 # network round-trip, and it picks up the DOTFILES_CODER ignore branch.
+# --force makes changes without prompting: the Coder agent has no TTY, and the
+# entrypoint modifies ~/.claude after chezmoi last wrote it, which would
+# otherwise trigger an interactive "overwrite?" prompt and abort.
 echo "[dotfiles] applying chezmoi from $SOURCE_DIR"
-chezmoi init --apply --source="$SOURCE_DIR"
+chezmoi init --apply --force --source="$SOURCE_DIR"
 
 # ---------- 3. shell fragment (append-only, guarded) ----------
 # chezmoi deploys ~/.config/shell/dotfiles.sh but must NOT touch the
