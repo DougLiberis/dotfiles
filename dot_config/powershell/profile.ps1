@@ -17,6 +17,36 @@ if ($IsInteractiveSession -and (Get-Module -ListAvailable -Name PSReadLine)) {
     Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
     Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
     Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+    # Source - https://stackoverflow.com/a/77959050
+    # Posted by Santiago Squarzon, modified by community. See post 'Timeline' for change history
+    # Retrieved 2026-06-26, License - CC BY-SA 4.0
+    Set-PSReadLineKeyHandler -Chord Ctrl+Shift+Delete -ScriptBlock {
+        $in = ''
+        [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref] $in, [ref] $null)
+
+        if ([string]::IsNullOrWhiteSpace($in)) {
+            return
+        }
+
+        $historyPath = (Get-PSReadLineOption).HistorySavePath
+
+        # only way to "refresh" the history in the current session is to clear it
+        [Microsoft.PowerShell.PSConsoleReadLine]::ClearHistory()
+        $content = [System.IO.File]::ReadAllLines($historyPath)
+        Clear-Content $historyPath
+
+        foreach ($line in $content) {
+            if ($line.StartsWith($in, [System.StringComparison]::InvariantCultureIgnoreCase)) {
+                continue
+            }
+
+            # and re-add it (excluding the line to remove)
+            [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory($line)
+        }
+
+        [Microsoft.PowerShell.PSConsoleReadLine]::DeleteLine()
+    }
 }
 
 # ── Aliases (mirrors .bashrc style) ──────────────────────────────────────────
