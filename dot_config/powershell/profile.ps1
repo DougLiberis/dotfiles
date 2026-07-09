@@ -2,8 +2,13 @@
 # Source of truth: $HOME\.config\powershell\profile.ps1
 # A stub at $PROFILE dot-sources this file (installed by chezmoi run_once script).
 
+# ── Interactive session detection ────────────────────────────────────────────
+# Agent/automation terminals typically run with stdin and/or stdout redirected;
+# skip line-editing and prompt theming there so they stay fast and undecorated.
+$IsInteractiveSession = -not ([Console]::IsInputRedirected -or [Console]::IsOutputRedirected)
+
 # ── PSReadLine ───────────────────────────────────────────────────────────────
-if (Get-Module -ListAvailable -Name PSReadLine) {
+if ($IsInteractiveSession -and (Get-Module -ListAvailable -Name PSReadLine)) {
     Import-Module PSReadLine
     Set-PSReadLineOption -EditMode Emacs
     Set-PSReadLineOption -PredictionSource HistoryAndPlugin
@@ -31,7 +36,7 @@ $LocalProfile = Join-Path $HOME ".config\powershell\profile.local.ps1"
 if (Test-Path $LocalProfile) { . $LocalProfile }
 
 # ── oh-my-posh prompt ────────────────────────────────────────────────────────
-if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+if ($IsInteractiveSession -and (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) {
     $ompConfig = Join-Path $HOME 'oh-my-posh-theme.omp.json'
     if (Test-Path $ompConfig) {
         oh-my-posh init pwsh --config $ompConfig | Invoke-Expression
