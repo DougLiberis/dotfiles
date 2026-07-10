@@ -14,8 +14,8 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- ── Shell ────────────────────────────────────────────────────────────────────
--- Default to PowerShell 7 (pwsh), matching the chezmoi-managed pwsh profile.
-config.default_prog = { 'pwsh.exe', '-NoLogo' }
+-- Default to Nushell.
+config.default_prog = { 'nu.exe' }
 
 -- ── Fonts ────────────────────────────────────────────────────────────────────
 -- JetBrains Mono ships bundled with WezTerm, so this renders out of the box.
@@ -109,6 +109,7 @@ config.max_fps = 120
 
 -- ── Launch menu (right-click the new-tab '+' button) ─────────────────────────
 config.launch_menu = {
+  { label = 'Nushell',            args = { 'nu.exe' } },
   { label = 'PowerShell 7',       args = { 'pwsh.exe', '-NoLogo' } },
   { label = 'Windows PowerShell', args = { 'powershell.exe' } },
   { label = 'Command Prompt',     args = { 'cmd.exe' } },
