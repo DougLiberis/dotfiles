@@ -54,6 +54,7 @@ Pulls latest changes from GitHub and applies them.
 | `dot_tmux.conf` | `~/.tmux.conf` |
 | `dot_config/nvim/` | `~/.config/nvim/` (LazyVim) |
 | `dot_config/ghostty/` | `~/.config/ghostty/` |
+| `dot_config/gh-dash/config.yml` | `~/.config/gh-dash/config.yml` |
 
 ## Day-to-day workflow
 

@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://gh-dash.dev/schema.json
+#
+# gh-dash config — https://www.gh-dash.dev/configuration/
+# Sections, theme, and keybindings are left unset so they track gh-dash's
+# built-in defaults. Only the local-machine wiring lives here.
+
+# Maps repo owner/name to a local checkout, so PR checkout and repo-scoped
+# keybindings (e.g. lazygit, open-in-editor) resolve to the right folder
+# instead of prompting to clone. Exact keys win over the wildcard.
+#
+# Repos checked out only inside a task worktree
+# (d:/workspaces/<TICKET>/worktrees/<repo>) won't match this and fall back
+# to gh-dash's clone prompt — there's no single stable path for those.
+repoPaths:
+  LiberisFinance/*: D:/*
+  DougLiberis/dotfiles: D:/dotfiles
+  DougLiberis/dotfiles-coder: D:/dotfiles-coder
+
+pager:
+  diff: less
