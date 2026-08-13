@@ -16,3 +16,7 @@
 #
 # You can remove these comments if you want or leave
 # them for future reference.
+
+# Atuin owns Ctrl+R (see autoload/_atuin_integration.nu); disable fzf's
+# history keybinding so the two don't fight over the same key.
+$env.FZF_CTRL_R_COMMAND = ""
