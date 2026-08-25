@@ -14,7 +14,11 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- ── Shell ────────────────────────────────────────────────────────────────────
--- Default to Nushell.
+-- Nushell is launched directly. Local splits are WezTerm's own panes (see Key
+-- bindings below); the remote box runs tmux over SSH. No local multiplexer is
+-- stacked in front of tmux — doing so breaks the tmux prefix: tmux sets
+-- `extended-keys on`, so the outer terminal encodes Ctrl+A as a modifyOtherKeys
+-- sequence (`CSI 27;5;97~`) that a second multiplexer wouldn't understand.
 config.default_prog = { 'nu.exe' }
 
 -- ── Fonts ────────────────────────────────────────────────────────────────────
@@ -102,9 +106,11 @@ config.audible_bell = 'Disabled'
 config.check_for_updates = false
 
 -- ── Rendering ──────────────────────────────────────────────────────────────--
--- WebGpu is the fastest backend on modern Windows GPUs. Fall back to 'OpenGL'
--- here if you hit rendering glitches on older hardware / RDP sessions.
-config.front_end = 'WebGpu'
+-- OpenGL avoids the WebGpu damage-tracking bug in the 20240203 stable build that
+-- left ghost/stale glyphs on scroll (they only cleared on a full repaint, e.g. text
+-- selection). Switch back to 'WebGpu' if a newer WezTerm build fixes it and you want
+-- the faster backend on modern GPUs.
+config.front_end = 'OpenGL'
 config.max_fps = 120
 
 -- ── Launch menu (right-click the new-tab '+' button) ─────────────────────────
