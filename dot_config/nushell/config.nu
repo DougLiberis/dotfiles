@@ -21,3 +21,6 @@
 # ConPTY, causing the scrollback to shift up one line per keystroke.
 # https://github.com/nushell/nushell/issues/13410
 $env.config.shell_integration.osc133 = false
+
+$env.config.buffer_editor = "C:\\Program Files\\Notepad++\\notepad++.exe"
+$env.config.show_banner = false

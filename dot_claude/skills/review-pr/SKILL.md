@@ -6,6 +6,7 @@ disable-model-invocation: true
 allowed-tools:
   - "Bash(gh pr view:*)"
   - "Bash(gh pr diff:*)"
+  - "Bash(gh pr review:*)"
   - "Bash(gh api:*)"
   - "Bash(gh pr list:*)"
   - "Bash(git rev-parse:*)"
@@ -166,3 +167,19 @@ Provide a summary table:
 - **Needs discussion** — PR raises questions that need team input
 
 End with a prioritized list of action items if any changes are requested.
+
+## Step 7: Posting the review to GitHub (only if requested)
+
+The Step 6 write-up is for the conversation. Only post anything to GitHub if the user explicitly asks (e.g. "approve this", "request changes", "leave a comment", "post this review"):
+
+```bash
+gh pr review {NUMBER} --repo {OWNER}/{REPO} --approve|--request-changes|--comment --body "..."
+```
+
+**The posted body must not restate what the PR does or list what was checked/verified** — no recapping scope alignment, no "confirmed X", no "ran the build/tests and they passed". That's already in the conversation and in the PR description; repeating it on GitHub is redundant noise for the author.
+
+The posted body should contain only:
+- The verdict itself, if it needs any qualification beyond the approve/request-changes state
+- Nits — minor, non-blocking suggestions — as short comments
+
+If there's nothing nit-worthy, post with an empty or near-empty body. Keep it short.
