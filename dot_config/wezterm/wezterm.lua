@@ -14,12 +14,12 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- ── Shell ────────────────────────────────────────────────────────────────────
--- Nushell is launched directly. Local splits are WezTerm's own panes (see Key
+-- PowerShell 7 is launched directly. Local splits are WezTerm's own panes (see Key
 -- bindings below); the remote box runs tmux over SSH. No local multiplexer is
 -- stacked in front of tmux — doing so breaks the tmux prefix: tmux sets
 -- `extended-keys on`, so the outer terminal encodes Ctrl+A as a modifyOtherKeys
 -- sequence (`CSI 27;5;97~`) that a second multiplexer wouldn't understand.
-config.default_prog = { 'nu.exe' }
+config.default_prog = { 'pwsh.exe', '-NoLogo' }
 
 -- ── Fonts ────────────────────────────────────────────────────────────────────
 -- JetBrains Mono ships bundled with WezTerm, so this renders out of the box.
@@ -115,8 +115,8 @@ config.max_fps = 120
 
 -- ── Launch menu (right-click the new-tab '+' button) ─────────────────────────
 config.launch_menu = {
-  { label = 'Nushell',            args = { 'nu.exe' } },
   { label = 'PowerShell 7',       args = { 'pwsh.exe', '-NoLogo' } },
+  { label = 'Nushell',            args = { 'nu.exe' } },
   { label = 'Windows PowerShell', args = { 'powershell.exe' } },
   { label = 'Command Prompt',     args = { 'cmd.exe' } },
 }
