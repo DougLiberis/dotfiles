@@ -67,7 +67,7 @@ if (Test-Path $LocalProfile) { . $LocalProfile }
 
 # ── oh-my-posh prompt ────────────────────────────────────────────────────────
 if ($IsInteractiveSession -and (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) {
-    $ompConfig = Join-Path $HOME 'oh-my-posh-theme.omp.json'
+    $ompConfig = Join-Path $HOME '.oh-my-posh-theme.omp.json'
     if (Test-Path $ompConfig) {
         oh-my-posh init pwsh --config $ompConfig | Invoke-Expression
     }
