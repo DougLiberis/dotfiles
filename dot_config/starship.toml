@@ -1,0 +1,93 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Ported from .oh-my-posh-theme.omp.json: two-line prompt, context on the right.
+# Every prompt is a fresh starship process, so keep modules cheap; anything that
+# shells out is capped by command_timeout.
+command_timeout = 500
+add_newline = false
+
+format = """
+[╭─](bright-black)$shell$username$directory$git_branch$git_state$git_status
+[╰─](bright-black)$character"""
+
+right_format = "$cmd_duration$nodejs$dotnet$terraform$aws$kubernetes"
+
+[shell]
+disabled = false
+pwsh_indicator = "pwsh"
+powershell_indicator = "ps5"
+bash_indicator = "bash"
+zsh_indicator = "zsh"
+nu_indicator = "nu"
+format = "[ $indicator]($style) "
+style = "bold blue"
+
+# Only shown when root / elevated (or over ssh).
+[username]
+format = "[ $user]($style) "
+style_root = "bold red"
+style_user = "yellow"
+
+[directory]
+format = "[ $path]($style)[$read_only]($read_only_style) "
+style = "bold #FF9248"
+truncation_length = 4
+truncate_to_repo = false
+home_symbol = "~"
+read_only = " "
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+symbol = " "
+style = "bold #c5e478"
+
+[git_status]
+format = "([$all_status$ahead_behind]($style) )"
+style = "#ffeb95"
+ahead = "⇡$count"
+behind = "⇣$count"
+diverged = "⇕⇡$ahead_count⇣$behind_count"
+modified = " $count "
+staged = "[ $count ](#ef5350)"
+untracked = "?$count "
+deleted = "✘$count "
+renamed = "»$count "
+stashed = ""
+
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[](bold #ef5350)"
+
+[cmd_duration]
+min_time = 2_000
+format = "[ $duration]($style) "
+style = "bright-black"
+
+[nodejs]
+format = "[$symbol$version]($style) "
+symbol = " "
+style = "#6CA35E"
+
+# Starship reads global.json / the SDK folder rather than running `dotnet --version`.
+# Ignore loose *.cs files so scratch folders don't trigger it.
+[dotnet]
+format = "[$symbol$version( 󰓾 $tfm)]($style) "
+symbol = " "
+style = "#0d6da8"
+detect_extensions = ["csproj", "fsproj", "sln", "slnx"]
+
+[terraform]
+format = "[$symbol$workspace]($style) "
+symbol = "󱁢 "
+style = "#7b42bc"
+
+[aws]
+format = "[$symbol$profile(@$region)]($style) "
+symbol = " "
+style = "#FFA400"
+
+[kubernetes]
+disabled = false
+format = "[$symbol$context( :: $namespace)]($style) "
+symbol = "󱃾 "
+style = "#326ce5"
