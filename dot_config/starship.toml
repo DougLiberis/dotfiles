@@ -9,7 +9,7 @@ add_newline = false
 # Right-aligned context uses $fill on line 1 rather than right_format: in pwsh,
 # right_format costs a second starship process on every prompt.
 format = """
-[╭─](bright-black)$shell$username$directory$git_branch$git_state$git_status$fill$cmd_duration$nodejs$dotnet$terraform$aws$kubernetes
+[╭─](bright-black)$shell$username$directory$git_branch$git_state$git_status$fill$cmd_duration$nodejs$dotnet$terraform$aws
 [╰─](bright-black)$character"""
 
 [fill]
@@ -88,9 +88,3 @@ style = "#7b42bc"
 format = "[$symbol$profile(@$region)]($style) "
 symbol = " "
 style = "#FFA400"
-
-[kubernetes]
-disabled = false
-format = "[$symbol$context( :: $namespace)]($style) "
-symbol = "󱃾 "
-style = "#326ce5"
