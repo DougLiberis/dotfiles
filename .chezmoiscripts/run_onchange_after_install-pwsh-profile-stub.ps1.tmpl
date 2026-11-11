@@ -1,7 +1,7 @@
 {{- if eq .chezmoi.os "windows" -}}
 # Installs a stub at $PROFILE that dot-sources the chezmoi-managed profile.
-# Re-runs whenever the managed profile content changes (hash embedded below).
-# managed-profile-sha256: {{ include "dot_config/powershell/profile.ps1" | sha256sum }}
+# The stub only points at the managed profile, so this re-runs only when this
+# script changes, not on every profile edit.
 
 $ErrorActionPreference = 'Stop'
 
