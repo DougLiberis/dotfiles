@@ -6,11 +6,14 @@
 command_timeout = 500
 add_newline = false
 
+# Right-aligned context uses $fill on line 1 rather than right_format: in pwsh,
+# right_format costs a second starship process on every prompt.
 format = """
-[╭─](bright-black)$shell$username$directory$git_branch$git_state$git_status
+[╭─](bright-black)$shell$username$directory$git_branch$git_state$git_status$fill$cmd_duration$nodejs$dotnet$terraform$aws$kubernetes
 [╰─](bright-black)$character"""
 
-right_format = "$cmd_duration$nodejs$dotnet$terraform$aws$kubernetes"
+[fill]
+symbol = " "
 
 [shell]
 disabled = false
