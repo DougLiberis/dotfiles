@@ -77,6 +77,15 @@ if ($starshipCmd) {
         & $starshipCmd.Source init powershell --print-full-init | Set-Content -Path $starshipInit -Encoding utf8
     }
     . $starshipInit
+
+    # Report the cwd to Windows Terminal (OSC 9;9) so "duplicate" splits/tabs open
+    # in the same folder. Starship calls this hook before each prompt.
+    function Invoke-Starship-PreCommand {
+        $loc = $executionContext.SessionState.Path.CurrentLocation
+        if ($loc.Provider.Name -eq 'FileSystem') {
+            $host.UI.Write("`e]9;9;`"$($loc.ProviderPath)`"`e\")
+        }
+    }
 }
 elseif ($IsInteractiveSession -and (Get-Command oh-my-posh -ErrorAction SilentlyContinue)) {
     $ompConfig = Join-Path $HOME '.oh-my-posh-theme.omp.json'
