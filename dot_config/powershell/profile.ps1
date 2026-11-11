@@ -74,7 +74,13 @@ if ($starshipCmd) {
     if (-not (Test-Path $starshipInit) -or
         (Get-Item $starshipCmd.Source).LastWriteTimeUtc -gt (Get-Item $starshipInit).LastWriteTimeUtc) {
         New-Item -ItemType Directory -Force -Path (Split-Path $starshipInit) | Out-Null
-        & $starshipCmd.Source init powershell --print-full-init | Set-Content -Path $starshipInit -Encoding utf8
+        # Capture as UTF-8; the default console code page mangles the script's glyphs.
+        $prevEncoding = [Console]::OutputEncoding
+        try {
+            [Console]::OutputEncoding = [Text.Encoding]::UTF8
+            & $starshipCmd.Source init powershell --print-full-init | Set-Content -Path $starshipInit -Encoding utf8
+        }
+        finally { [Console]::OutputEncoding = $prevEncoding }
     }
     . $starshipInit
 
