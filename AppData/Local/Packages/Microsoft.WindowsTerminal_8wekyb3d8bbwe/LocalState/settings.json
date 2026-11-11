@@ -1,0 +1,307 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions":
+    [
+        {
+            "command": "togglePaneZoom",
+            "id": "User.TogglePaneZoom"
+        },
+        {
+            "command": { "action": "splitPane", "split": "right", "splitMode": "duplicate" },
+            "id": "User.SplitRightDuplicate"
+        },
+        {
+            "command": { "action": "splitPane", "split": "down", "splitMode": "duplicate" },
+            "id": "User.SplitDownDuplicate"
+        }
+    ],
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "keybindings":
+    [
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.FindText",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
+        },
+        {
+            "id": "Terminal.ToggleFocusMode",
+            "keys": "shift+f11"
+        },
+        {
+            "id": "Terminal.ToggleShaderEffects",
+            "keys": "shift+f10"
+        },
+        {
+            "id": "User.TogglePaneZoom",
+            "keys": "alt+shift+z"
+        },
+        {
+            "id": "User.SplitRightDuplicate",
+            "keys": "alt+shift+plus"
+        },
+        {
+            "id": "User.SplitDownDuplicate",
+            "keys": "alt+shift+minus"
+        }
+    ],
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles":
+    {
+        "defaults":
+        {
+            "font":
+            {
+                "face": "FiraCode Nerd Font Mono"
+            }
+        },
+        "list":
+        [
+            {
+                "colorScheme": "Vintage Green",
+                "commandline": "%PROGRAMFILES%\\PowerShell\\7\\pwsh.exe",
+                "experimental.retroTerminalEffect": false,
+                "font":
+                {
+                    "face": "FiraCode Nerd Font Mono"
+                },
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "name": "PowerShell",
+                "opacity": 95,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": true
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+            },
+            {
+                "guid": "{116fd427-2f74-5db9-9187-c2d1844fe40b}",
+                "hidden": false,
+                "name": "podman-machine-default",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{a39941a5-2240-59be-870d-9f3c8c074b5e}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "hidden": false,
+                "name": "Git Bash",
+                "source": "Git"
+            },
+            {
+                "altGrAliasing": true,
+                "antialiasingMode": "grayscale",
+                "closeOnExit": "automatic",
+                "colorScheme": "Ubuntu-ColorScheme",
+                "commandline": "%PROGRAMFILES%\\PowerShell\\7\\pwsh.exe",
+                "cursorShape": "bar",
+                "elevate": true,
+                "font":
+                {
+                    "face": "Cascadia Mono",
+                    "size": 12
+                },
+                "guid": "{519f127c-1d53-4892-bdc7-a44d27696557}",
+                "hidden": false,
+                "historySize": 9001,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "intenseTextStyle": "bold",
+                "name": "PowerShell (Admin)",
+                "padding": "8, 8, 8, 8",
+                "snapOnInput": true,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": false
+            },
+            {
+                "guid": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
+                "hidden": false,
+                "name": "Nushell",
+                "source": "nu"
+            },
+            {
+                "guid": "{acb47e7c-abe9-578c-a8e0-1a4eea3ae2fd}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 18",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{f955e874-2abb-5948-932d-659295195d9a}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 18",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{af344b50-0537-5384-b1b9-25370034e53c}",
+                "hidden": false,
+                "name": "rancher-desktop-data",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{504f3e97-649e-5808-96ef-de88179fbeb8}",
+                "hidden": false,
+                "name": "rancher-desktop",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "altGrAliasing": true,
+                "antialiasingMode": "grayscale",
+                "closeOnExit": "automatic",
+                "colorScheme": "Vintage Amber",
+                "commandline": "cmd.exe /c ssh main.doug-space.dougfinnie.coder",
+                "cursorShape": "bar",
+                "experimental.pixelShaderPath": "C:\\Users\\DougFinnie\\windows-terminal-shaders\\crt-amber.hlsl",
+                "font":
+                {
+                    "face": "FiraCode Nerd Font Mono",
+                    "size": 12
+                },
+                "guid": "{f62d3846-adc0-44e8-9dc7-246fcc711b59}",
+                "hidden": false,
+                "historySize": 9001,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "name": "Coder Danger",
+                "opacity": 85,
+                "padding": "8, 8, 8, 8",
+                "snapOnInput": true,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": true
+            },
+            {
+                "altGrAliasing": true,
+                "antialiasingMode": "grayscale",
+                "closeOnExit": "automatic",
+                "colorScheme": "Vintage Amber",
+                "commandline": "cmd.exe /c ssh main.doug-space.dougfinnie.coder",
+                "cursorShape": "bar",
+                "experimental.retroTerminalEffect": true,
+                "font":
+                {
+                    "face": "FiraCode Nerd Font Mono",
+                    "size": 12
+                },
+                "guid": "{85a66649-5725-4318-81e7-2527243a9a04}",
+                "hidden": false,
+                "historySize": 9001,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "name": "Coder",
+                "padding": "8, 8, 8, 8",
+                "snapOnInput": true,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": false
+            },
+            {
+                "guid": "{eaf9304d-cefe-5cd1-afb4-273213f90e2f}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{add32588-45f5-5da3-acb8-f37ec778f8f5}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{c4203d41-921b-5f88-a755-1a7f19690900}",
+                "hidden": false,
+                "name": "rancher-desktop",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{fbcc1801-e68d-5024-9d7f-233d077a1d2f}",
+                "hidden": false,
+                "name": "rancher-desktop",
+                "source": "Microsoft.WSL"
+            }
+        ]
+    },
+    "schemes":
+    [
+        {
+            "background": "#0A0400",
+            "black": "#070300",
+            "blue": "#FF9900",
+            "brightBlack": "#3D1A00",
+            "brightBlue": "#FFBB44",
+            "brightCyan": "#FFDD00",
+            "brightGreen": "#CCEE00",
+            "brightPurple": "#FFCC44",
+            "brightRed": "#FF5500",
+            "brightWhite": "#FFCC88",
+            "brightYellow": "#FFEE66",
+            "cursorColor": "#FF8C00",
+            "cyan": "#DDAA00",
+            "foreground": "#FFAA00",
+            "green": "#AACC00",
+            "name": "Vintage Amber",
+            "purple": "#FF8800",
+            "red": "#FF4400",
+            "selectionBackground": "#3D1A00",
+            "white": "#FFAA00",
+            "yellow": "#FFDD44"
+        },
+        {
+            "background": "#000A00",
+            "black": "#000700",
+            "blue": "#009900",
+            "brightBlack": "#003300",
+            "brightBlue": "#00CC44",
+            "brightCyan": "#44FF44",
+            "brightGreen": "#00FF00",
+            "brightPurple": "#00AA00",
+            "brightRed": "#FF3300",
+            "brightWhite": "#88FF88",
+            "brightYellow": "#AAFF00",
+            "cursorColor": "#00FF00",
+            "cyan": "#00BB44",
+            "foreground": "#00CC00",
+            "green": "#00CC00",
+            "name": "Vintage Green",
+            "purple": "#007700",
+            "red": "#CC2200",
+            "selectionBackground": "#003300",
+            "white": "#00CC00",
+            "yellow": "#88CC00"
+        }
+    ],
+    "themes": []
+}

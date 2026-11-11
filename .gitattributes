@@ -6,3 +6,7 @@ install.sh  text eol=lf
 dot_bashrc  text eol=lf
 dot_zshrc   text eol=lf
 dot_profile text eol=lf
+
+# Windows Terminal writes settings.json with LF; keep it byte-identical so
+# chezmoi doesn't report drift after autocrlf checkouts.
+AppData/**/settings.json text eol=lf
